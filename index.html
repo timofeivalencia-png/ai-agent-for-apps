@@ -38,25 +38,25 @@
         <div class="mini-panel">
           <div class="mini-label">Capabilities</div>
           <div class="capability-list">
-            <span>UI design</span>
-            <span>Logic systems</span>
-            <span>Media analysis</span>
+            <span>Web design</span>
+            <span>App logic</span>
+            <span>Media review</span>
             <span>3D context</span>
-            <span>Full-stack strategy</span>
+            <span>AI planning</span>
           </div>
         </div>
 
         <div class="mini-panel highlight">
           <div class="mini-label">Free forever</div>
-          <p>No credits, no subscriptions, no locked features.</p>
+          <p>No credits. No subscriptions. No locked features.</p>
         </div>
       </aside>
 
-      <main class="workspace">
+      <main class="workspace-area">
         <header class="topbar">
           <div>
             <div class="eyebrow">Advanced AI agent</div>
-            <h1>Build websites and apps without limits</h1>
+            <h1>Design complex websites and apps with a single prompt</h1>
           </div>
           <div class="header-actions">
             <span class="pill success">Always free</span>
@@ -64,104 +64,124 @@
           </div>
         </header>
 
-        <section class="stats-grid">
-          <article class="stat-card">
-            <div class="stat-label">Complexity</div>
-            <div class="stat-value">High</div>
-            <div class="stat-detail">Dynamic flows, complex state, multi-screen logic</div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">Asset review</div>
-            <div class="stat-value">Multi-format</div>
-            <div class="stat-detail">Images, docs, audio, 3D models</div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">Workflow</div>
-            <div class="stat-value">Agent-first</div>
-            <div class="stat-detail">Prompt, plan, refine, ship-ready architecture</div>
-          </article>
-        </section>
+        <div class="workspace-grid">
+          <section class="chat-column">
+            <section class="stats-grid">
+              <article class="stat-card">
+                <div class="stat-label">Complexity</div>
+                <div class="stat-value">Advanced</div>
+                <div class="stat-detail">Multi-step flows, custom logic, modular architecture</div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-label">Media inputs</div>
+                <div class="stat-value">4 formats</div>
+                <div class="stat-detail">Photos, docs, audio, 3D models</div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-label">Access</div>
+                <div class="stat-value">100% free</div>
+                <div class="stat-detail">No paywalls, no pricing, no credit system</div>
+              </article>
+            </section>
 
-        <section class="plan-board">
-          <div class="plan-header">
-            <div>
+            <section class="chat-panel">
+              <div id="chat-log" class="chat-log" aria-live="polite">
+                <article class="message assistant">
+                  <div class="avatar">AI</div>
+                  <div class="bubble wide">
+                    I can plan, design, and structure complex website and app builds from a single idea. Choose a mode from the + menu, add any supporting media, and I’ll break the project into a strong execution plan.
+                  </div>
+                </article>
+              </div>
+
+              <div class="attachments-bar">
+                <div id="attachments" class="attachment-list"></div>
+              </div>
+
+              <div class="composer-wrap">
+                <button id="plus-button" class="plus-button" aria-label="Open action menu">+</button>
+
+                <div id="plus-menu" class="plus-menu hidden" aria-label="Action menu">
+                  <div class="menu-section">
+                    <div class="menu-title">Choose mode</div>
+                    <button class="mode-option active" data-mode="Ask question">Ask question</button>
+                    <button class="mode-option" data-mode="Create website">Create website</button>
+                    <button class="mode-option" data-mode="Build application">Build application</button>
+                  </div>
+
+                  <div class="menu-section">
+                    <div class="menu-title">Attach media</div>
+                    <div class="upload-grid">
+                      <label class="upload-button">
+                        Photos / Images
+                        <input id="image-upload" type="file" accept="image/*" />
+                      </label>
+                      <label class="upload-button">
+                        Documents
+                        <input id="document-upload" type="file" accept=".pdf,.doc,.docx,.txt,.md,.csv,.xlsx,.pptx" />
+                      </label>
+                      <label class="upload-button">
+                        Audio
+                        <input id="audio-upload" type="file" accept="audio/*" />
+                      </label>
+                      <label class="upload-button">
+                        3D Models
+                        <input id="model-upload" type="file" accept=".obj,.gltf,.glb,.fbx,.stl,.dae" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="composer-inputs">
+                  <div id="mode-indicator" class="mode-indicator">Ask question</div>
+                  <textarea id="prompt-input" rows="1" placeholder="Describe the website or app you want to build..."></textarea>
+                  <button id="send-button" class="send-button">Send</button>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <aside class="inspector-column">
+            <div class="inspector-header">
               <div class="eyebrow small">Project blueprint</div>
-              <h2>Live strategy</h2>
+              <h2>AI execution plan</h2>
             </div>
-            <span class="status-tag">Ready to build</span>
-          </div>
 
-          <div class="plan-grid">
-            <div class="plan-card">
-              <div class="plan-title">Primary goal</div>
-              <p id="goal-text">Define a clear product identity, user flow, and conversion strategy.</p>
+            <div class="inspector-card primary">
+              <div class="inspector-title">Primary direction</div>
+              <p id="goal-text">Define the core user need, visual identity, and conversion path before building.</p>
             </div>
-            <div class="plan-card">
-              <div class="plan-title">Core stack</div>
-              <p id="stack-text">Responsive UI, modular components, strong visual hierarchy, scalable logic.</p>
+
+            <div class="inspector-card">
+              <div class="inspector-title">Core stack</div>
+              <p id="stack-text">Responsive UI, modular components, interaction design, and scalable logic architecture.</p>
             </div>
-            <div class="plan-card">
-              <div class="plan-title">Deliverables</div>
-              <p id="deliverable-text">Landing pages, workflows, data model, interaction patterns, and build plan.</p>
+
+            <div class="inspector-card">
+              <div class="inspector-title">Execution plan</div>
+              <ul id="plan-list" class="plan-list">
+                <li>Map the user journey and product messages.</li>
+                <li>Define the key screens and interactive flows.</li>
+                <li>Build with scalable content blocks and polished UI states.</li>
+              </ul>
             </div>
-          </div>
-        </section>
 
-        <section class="chat-panel">
-          <div id="chat-log" class="chat-log" aria-live="polite">
-            <article class="message assistant">
-              <div class="avatar">AI</div>
-              <div class="bubble wide">
-                I can design complex websites, build sophisticated apps, interpret uploaded media, and turn broad ideas into detailed implementation plans. Open the + menu to choose a mode and attach relevant files.
-              </div>
-            </article>
-          </div>
-
-          <div class="attachments-bar">
-            <div id="attachments" class="attachment-list"></div>
-          </div>
-
-          <div class="composer-wrap">
-            <button id="plus-button" class="plus-button" aria-label="Open action menu">+</button>
-
-            <div id="plus-menu" class="plus-menu hidden" aria-label="Action menu">
-              <div class="menu-section">
-                <div class="menu-title">Choose mode</div>
-                <button class="mode-option active" data-mode="Ask question">Ask question</button>
-                <button class="mode-option" data-mode="Create website">Create website</button>
-                <button class="mode-option" data-mode="Build application">Build application</button>
-              </div>
-
-              <div class="menu-section">
-                <div class="menu-title">Attach media</div>
-                <div class="upload-grid">
-                  <label class="upload-button">
-                    Photos / Images
-                    <input id="image-upload" type="file" accept="image/*" />
-                  </label>
-                  <label class="upload-button">
-                    Documents
-                    <input id="document-upload" type="file" accept=".pdf,.doc,.docx,.txt,.md,.csv,.xlsx,.pptx" />
-                  </label>
-                  <label class="upload-button">
-                    Audio
-                    <input id="audio-upload" type="file" accept="audio/*" />
-                  </label>
-                  <label class="upload-button">
-                    3D Models
-                    <input id="model-upload" type="file" accept=".obj,.gltf,.glb,.fbx,.stl,.dae" />
-                  </label>
+            <div class="preview-panel">
+              <div class="inspector-title">Generated concept</div>
+              <div id="preview-layout" class="preview-layout">
+                <div class="mini-preview top">
+                  <div class="mini-preview-header"></div>
+                  <div class="mini-preview-body"></div>
+                </div>
+                <div class="mini-preview-grid">
+                  <div class="mini-preview small"></div>
+                  <div class="mini-preview small"></div>
+                  <div class="mini-preview small"></div>
                 </div>
               </div>
             </div>
-
-            <div class="composer-inputs">
-              <div id="mode-indicator" class="mode-indicator">Ask question</div>
-              <textarea id="prompt-input" rows="1" placeholder="Describe the website or app you want to build..."></textarea>
-              <button id="send-button" class="send-button">Send</button>
-            </div>
-          </div>
-        </section>
+          </aside>
+        </div>
       </main>
     </div>
 
