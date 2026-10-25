@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Builder Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-row">
+          <div class="brand-mark">A</div>
+          <div>
+            <div class="brand-name">AI Builder</div>
+            <div class="brand-sub">Studio</div>
+          </div>
+        </div>
+
+        <div class="nav-panel">
+          <div class="nav-item active">
+            <span class="nav-icon">✦</span>
+            <span>Agent workspace</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>Website plans</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Application builds</span>
+          </div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="mini-label">Capabilities</div>
+          <div class="capability-list">
+            <span>UI generation</span>
+            <span>App logic</span>
+            <span>Media review</span>
+            <span>3D model context</span>
+            <span>Full-stack planning</span>
+          </div>
+        </div>
+
+        <div class="mini-panel highlight">
+          <div class="mini-label">Free forever</div>
+          <p>No credits, no subscriptions, no locked features.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">Advanced AI agent</div>
+            <h1>Build websites and apps without limits</h1>
+          </div>
+          <div class="header-actions">
+            <span class="pill success">Always free</span>
+            <button class="primary-button">Launch project</button>
+          </div>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-label">Complexity</div>
+            <div class="stat-value">High</div>
+            <div class="stat-detail">Multi-page, dynamic logic, live data flows</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">Asset review</div>
+            <div class="stat-value">4 media types</div>
+            <div class="stat-detail">Images, docs, audio, 3D assets</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">Workflow</div>
+            <div class="stat-value">Agent-first</div>
+            <div class="stat-detail">Prompt, generate, refine, deploy-ready plan</div>
+          </article>
+        </section>
+
+        <section class="chat-panel">
+          <div id="chat-log" class="chat-log" aria-live="polite">
+            <article class="message assistant">
+              <div class="avatar">AI</div>
+              <div class="bubble wide">
+                I can help design sophisticated websites, build interactive web applications, analyze uploaded media, and turn complex requirements into a functional roadmap. Choose a mode from the + menu and attach any related files.
+              </div>
+            </article>
+          </div>
+
+          <div class="attachments-bar">
+            <div id="attachments" class="attachment-list"></div>
+          </div>
+
+          <div class="composer-wrap">
+            <button id="plus-button" class="plus-button" aria-label="Open action menu">+</button>
+
+            <div id="plus-menu" class="plus-menu hidden" aria-label="Action menu">
+              <div class="menu-section">
+                <div class="menu-title">Choose mode</div>
+                <button class="mode-option active" data-mode="Ask question">Ask question</button>
+                <button class="mode-option" data-mode="Create website">Create website</button>
+                <button class="mode-option" data-mode="Build application">Build application</button>
+              </div>
+
+              <div class="menu-section">
+                <div class="menu-title">Attach media</div>
+                <div class="upload-grid">
+                  <label class="upload-button">
+                    Photos / Images
+                    <input id="image-upload" type="file" accept="image/*" />
+                  </label>
+                  <label class="upload-button">
+                    Documents
+                    <input id="document-upload" type="file" accept=".pdf,.doc,.docx,.txt,.md,.csv,.xlsx,.pptx" />
+                  </label>
+                  <label class="upload-button">
+                    Audio
+                    <input id="audio-upload" type="file" accept="audio/*" />
+                  </label>
+                  <label class="upload-button">
+                    3D Models
+                    <input id="model-upload" type="file" accept=".obj,.gltf,.glb,.fbx,.stl,.dae" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="composer-inputs">
+              <div id="mode-indicator" class="mode-indicator">Ask question</div>
+              <textarea id="prompt-input" rows="1" placeholder="Describe the website or app you want to build..."></textarea>
+              <button id="send-button" class="send-button">Send</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
