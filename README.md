@@ -19,32 +19,32 @@ const modeButtons = [...document.querySelectorAll('.mode-option')];
 
 const modeData = {
   'Ask question': {
-    goal: 'Clarify the core user need, product direction, and the highest-value problem to solve.',
-    stack: 'UX framing, journey mapping, clear decision points, and a realistic execution blueprint.',
+    goal: 'Clarify the user need, product intent, and the highest-value problem to solve first.',
+    stack: 'UX framing, journey mapping, clear decision points, and a realistic blueprint for execution.',
     steps: [
-      'Map the user intent and business value.',
-      'Define the must-have screens and core interactions.',
-      'Prioritize a minimal but high-impact first build.'
+      'Map the user intent and the business value.',
+      'Define the must-have screens and key decisions.',
+      'Prioritize a lean but high-impact first release.'
     ],
     previewLabel: 'Conversational product map'
   },
   'Create website': {
-    goal: 'Design a premium website experience with strong narrative structure and conversion focus.',
-    stack: 'Responsive layout system, visual storytelling, CTA strategy, and scalable section patterns.',
+    goal: 'Design a premium website experience with a persuasive story, clarity, and strong conversion flow.',
+    stack: 'Responsive layout system, content sequencing, high-clarity sections, and scalable design patterns.',
     steps: [
-      'Define the hero, value proposition, and trust-building sections.',
-      'Build a modular page system with clear hierarchy and flow.',
-      'Finalize content blocks, responsive logic, and call-to-action placement.'
+      'Define the hero, value proposition, and trust-building messages.',
+      'Design the flow of sections and calls to action.',
+      'Prepare the modular page system for implementation and iteration.'
     ],
     previewLabel: 'Premium landing system'
   },
   'Build application': {
-    goal: 'Turn the idea into an application with clear logic, workflows, and scalable product architecture.',
-    stack: 'Feature planning, module design, state management, data flow, and polished UX states.',
+    goal: 'Turn the idea into a sophisticated app with clear logic, flows, and scalable architecture.',
+    stack: 'Feature planning, module design, state flows, data structure, and polished product experience.',
     steps: [
-      'Map the primary user flows and critical decision points.',
-      'Design the core modules and app screens.',
-      'Plan the backend logic, validation, and production-ready states.'
+      'Map the main user flows and product requirements.',
+      'Design the key screens and interaction patterns.',
+      'Plan validation, data logic, and production-ready architecture.'
     ],
     previewLabel: 'App architecture preview'
   }
@@ -61,9 +61,7 @@ function setActiveMode(nextMode) {
 function renderAttachments() {
   attachmentsWrap.innerHTML = '';
 
-  if (!state.attachments.length) {
-    return;
-  }
+  if (!state.attachments.length) return;
 
   state.attachments.forEach((file) => {
     const tag = document.createElement('span');
@@ -128,13 +126,13 @@ function handleFileSelection(event) {
   plusMenu.classList.add('hidden');
 }
 
-function updatePlaneDetails(prompt, mode) {
+function updateBlueprint(prompt, mode) {
   const selected = modeData[mode] || modeData['Ask question'];
   goalText.textContent = selected.goal;
   stackText.textContent = selected.stack;
   planList.innerHTML = selected.steps.map((step) => `<li>${step}</li>`).join('');
 
-  const safePrompt = prompt.length > 54 ? `${prompt.slice(0, 54)}…` : prompt;
+  const shortPrompt = prompt.length > 54 ? `${prompt.slice(0, 54)}…` : prompt;
   previewLayout.innerHTML = `
     <div class="mini-preview top">
       <div class="mini-preview-header"></div>
@@ -146,16 +144,16 @@ function updatePlaneDetails(prompt, mode) {
       <div class="mini-preview small"></div>
     </div>
     <div class="preview-label">${selected.previewLabel}</div>
-    <div class="preview-summary">${safePrompt}</div>
+    <div class="preview-summary">${shortPrompt}</div>
   `;
 }
 
 function buildAssistantResponse(prompt, mode, attachments) {
   const mediaLine = attachments.length
     ? `I also reviewed ${attachments.length} attachment${attachments.length > 1 ? 's' : ''}: ${attachments.map((file) => file.name).join(', ')}.`
-    : 'No attachments were provided, so this is based on your prompt alone.';
+    : 'No attachments were included, so this plan is based on your prompt alone.';
 
-  const details = modeData[mode] || modeData['Ask question'];
+  const selected = modeData[mode] || modeData['Ask question'];
 
   return `
     <div>
@@ -164,24 +162,24 @@ function buildAssistantResponse(prompt, mode, attachments) {
     <div class="response-block">
       <span class="response-title">Understanding</span>
       <ul class="response-list">
-        <li>${details.goal}</li>
+        <li>${selected.goal}</li>
         <li>${mediaLine}</li>
       </ul>
     </div>
     <div class="response-block">
       <span class="response-title">Recommended structure</span>
       <ul class="response-list">
-        <li>Start with the user journey and the clearest product promise.</li>
-        <li>Design the main screens with strong visual hierarchy and a calm information flow.</li>
-        <li>Use structured sections, reusable components, and resilient interactions.</li>
+        <li>Start with the product promise and the most important user journey.</li>
+        <li>Design the key UI blocks with strong hierarchy and clear information flow.</li>
+        <li>Use structured sections and reusable logic to keep the build scalable.</li>
       </ul>
     </div>
     <div class="response-block">
       <span class="response-title">Execution plan</span>
       <ul class="response-list">
-        <li>${details.stack}</li>
-        <li>Validate the experience against clarity, trust, and speed.</li>
-        <li>Build in phases so the most important functionality lands first.</li>
+        <li>${selected.stack}</li>
+        <li>Validate the concept against clarity, usability, and speed.</li>
+        <li>Build in iterative phases so the core value lands first.</li>
       </ul>
     </div>
   `;
@@ -207,7 +205,7 @@ sendButton.addEventListener('click', () => {
   }
 
   appendMessage('user', prompt);
-  updatePlaneDetails(prompt, state.mode);
+  updateBlueprint(prompt, state.mode);
   const typing = showTypingIndicator();
 
   window.setTimeout(() => {
@@ -228,4 +226,4 @@ promptInput.addEventListener('keydown', (event) => {
 
 setActiveMode(state.mode);
 renderAttachments();
-updatePlaneDetails('Define a premium digital experience for a modern AI product.', state.mode);
+updateBlueprint('Define a premium digital experience for a modern AI product.', state.mode);
